@@ -27,7 +27,7 @@ namespace Consecutive_Prime_Sum
                     {
                         break;
                     }
-                    if (integerCheck % provenPrime != 0 && index == (fullPrimesList.Count - 1))
+                    if (provenPrime > limitCheck || (integerCheck % provenPrime != 0 && index == (fullPrimesList.Count - 1)))
                     {
                         fullPrimesList.Add(integerCheck);
                         break;
@@ -37,10 +37,6 @@ namespace Consecutive_Prime_Sum
 
             Console.WriteLine("The number of primes under " + limitNumber.ToString() + " is " + (fullPrimesList.Count).ToString());
             Console.WriteLine();
-            foreach (var i in fullPrimesList)
-            {
-                Console.Write(i.ToString() + " , ");
-            }
 
             for (int i = 0; i < limitNumber; i++)
             {
