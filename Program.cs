@@ -10,40 +10,42 @@ namespace Consecutive_Prime_Sum
             List<int> fullPrimesList = new List<int>() {2};
             List<int> printingList = new List<int>() {};
 
-            int limitNumber = 10000;
+            int limitNumber = 1000;
             var limitCheck = Math.Sqrt(limitNumber);
-            int limitIndex;
             int sumOfConsecutiveElements;
             int currentMaxElementCount = 1;
             int largestSummedPrime = 0;
 
-            //for loop to find all primes under a million
-            for (int i = 3; i < limitNumber; i += 2)
+            for (int integerCheck = 3; integerCheck < limitNumber; integerCheck += 2)
             {
-                var limitLoop = Math.Sqrt(i);
 
-                for (int j = 0; j < fullPrimesList.Count; j++)
+                for (int index = 0; index < fullPrimesList.Count; index++)
                 {
-                    var entry = fullPrimesList[j];
+                    var provenPrime = fullPrimesList[index];
 
-                    if (i % entry == 0)
+                    if (integerCheck % provenPrime == 0)
                     {
                         break;
                     }
-                    if (i % entry != 0 && j == (fullPrimesList.Count - 1))
+                    if (integerCheck % provenPrime != 0 && index == (fullPrimesList.Count - 1))
                     {
-                        fullPrimesList.Add(i);
+                        fullPrimesList.Add(integerCheck);
                     }
                 }
             }
 
             Console.WriteLine("The number of primes under " + limitNumber.ToString() + " is " + (fullPrimesList.Count).ToString());
             Console.WriteLine();
+            foreach (var i in fullPrimesList)
+            {
+                Console.Write(i.ToString() + " , ");
+            }
 
             for (int i = 0; i < limitNumber; i++)
             {
                 sumOfConsecutiveElements = 0;
                 List<int> consecutiveElements = new List<int>() {};
+
                 for (int index = i; index < fullPrimesList.Count; index++)
                 {
                     sumOfConsecutiveElements += fullPrimesList[index];
@@ -51,7 +53,7 @@ namespace Consecutive_Prime_Sum
 
                     if (fullPrimesList.Contains(sumOfConsecutiveElements))
                     {
-                        if (consecutiveElements.Count >= currentMaxElementCount)
+                        if (consecutiveElements.Count > currentMaxElementCount)
                         {
                             currentMaxElementCount = consecutiveElements.Count;
                             Console.WriteLine("Most consecutive primes so far is " + (currentMaxElementCount).ToString() + " which sums to " + sumOfConsecutiveElements.ToString());
@@ -62,15 +64,28 @@ namespace Consecutive_Prime_Sum
                     }
                 }
             }
+
             Console.WriteLine();
-            Console.WriteLine("The prime under " + limitNumber.ToString() + " that is a sum of the most consecutive primes is " + largestSummedPrime.ToString() + " - which is the sum of " + (currentMaxElementCount).ToString() + " consecutive prime numbers.");
+            Console.WriteLine("The prime under " + limitNumber.ToString() + " that is a sum of the most consecutive primes is " + largestSummedPrime.ToString() + " - which is the sum of " + (currentMaxElementCount).ToString() + " consecutive prime numbers:");
             Console.WriteLine();
             Console.Write(largestSummedPrime.ToString() + " = ");
-            foreach (int i in printingList)
+
+
+            int totalPrintCount = printingList.Count;
+
+            for (int count = 0; count < totalPrintCount; count++)
             {
-                Console.Write(i.ToString() + " + ");
+                if (count != (totalPrintCount - 1))
+                {
+                    Console.Write(printingList[count].ToString() + " + ");
+                }
+                else
+                {
+                    Console.Write(printingList[count].ToString());
+                }
             }
             Console.WriteLine();
+
         }
     }
 }
