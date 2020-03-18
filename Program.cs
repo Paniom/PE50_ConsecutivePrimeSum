@@ -10,7 +10,7 @@ namespace Consecutive_Prime_Sum
             List<int> fullPrimesList = new List<int>() {2};
             List<int> printingList = new List<int>() {};
 
-            int limitNumber = 1000;
+            int limitNumber = 1000000;
             var limitCheck = Math.Sqrt(limitNumber);
             int sumOfConsecutiveElements;
             int currentMaxElementCount = 1;
@@ -30,6 +30,7 @@ namespace Consecutive_Prime_Sum
                     if (integerCheck % provenPrime != 0 && index == (fullPrimesList.Count - 1))
                     {
                         fullPrimesList.Add(integerCheck);
+                        break;
                     }
                 }
             }
