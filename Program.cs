@@ -38,11 +38,11 @@ namespace Consecutive_Prime_Sum
             Console.WriteLine("The number of primes under " + limitNumber.ToString() + " is " + (fullPrimesList.Count).ToString());
             Console.WriteLine();
 
-            for (int i = 0; i < (limitNumber / 2); i++)
+            for (int i = 0; i < (limitNumber / (currentMaxElementCount * 460)); i++) // dividing by currentMaxElement provides a quicker process. Multiplying currentMaxElement by up to 460 still provides the correct answer but 465 does not.
+                //TODO: there needs to be a functionaly way to limit this rather than finding a processing limit for this specific limitNumber. As with smaller limit numbers this static value will decrease and larger limit numbers will increase.
             {
                 sumOfConsecutiveElements = 0;
                 List<int> consecutiveElements = new List<int>() {};
-
 
                 for (int index = i; index < fullPrimesList.Count; index++)
                 {
