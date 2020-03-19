@@ -38,14 +38,20 @@ namespace Consecutive_Prime_Sum
             Console.WriteLine("The number of primes under " + limitNumber.ToString() + " is " + (fullPrimesList.Count).ToString());
             Console.WriteLine();
 
-            for (int i = 0; i < limitNumber; i++)
+            for (int i = 0; i < (limitNumber / 2); i++)
             {
                 sumOfConsecutiveElements = 0;
                 List<int> consecutiveElements = new List<int>() {};
 
+
                 for (int index = i; index < fullPrimesList.Count; index++)
                 {
                     sumOfConsecutiveElements += fullPrimesList[index];
+
+                    if (sumOfConsecutiveElements > limitNumber)
+                    {
+                        break;
+                    }
                     consecutiveElements.Add(fullPrimesList[index]);
 
                     if (fullPrimesList.Contains(sumOfConsecutiveElements))
